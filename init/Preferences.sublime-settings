@@ -7,5 +7,7 @@
   "font_size": 18,
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
-  "trim_automatic_white_space": true
+  "trim_automatic_white_space": true,
+  "folder_exclude_patterns": ["coverage",".idea",".git"],
+  "file_exclude_patterns": [".DS_Store","coverage.data"]
 }

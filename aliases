@@ -1,8 +1,17 @@
-# 
-alias a2='cd ~/Dev/NHQ/abaqis'
-alias a3='cd ~/Dev/NHQ/abaqis3'
+#
+alias a2b='cd ~/Dev/NHQ/abaqis2-be'
+alias a2f='cd ~/Dev/NHQ/abaqis2-fe'
+alias a4b='cd ~/Dev/NHQ/abaqis-be'
+alias a4f='cd ~/Dev/NHQ/abaqis-fe'
+alias a4h='cd ~/Dev/NHQ/abaqis-helm'
 alias moh='cd ~/Dev/NHQ/MoH'
-alias emp='cd ~/Dev/NHQ/EmpSat'
+alias ese='cd ~/Dev/NHQ/EmpSat'
+alias pacb='cd ~/Dev/NHQ/pac-sight-be'
+alias pacd='cd ~/Dev/NHQ/pac-sight-data'
+alias pach='cd ~/Dev/NHQ/pac-sight-helmet'
+alias pacf='cd ~/Dev/NHQ/pac-sight-fe'
+alias mds2='cd ~/Dev/NHQ/MDSEx'
+alias mixs='iex -S mix'
 alias cls='clear'
 alias wget='curl -O'
 alias kx="ps -ef | grep ngin | grep -v grep | awk '{print $2}' | sudo xargs kill -9"
@@ -10,6 +19,35 @@ alias psr='ps aux | grep '
 alias rrg='rake routes | grep '
 alias dev='ssh ian@dev.abaqis.com'
 alias trinity='ssh ian@trinity.abaqis.int'
+alias branchreset='rake db:drop;rake db:create; rake db:migrate; rake db:migrate RAILS_ENV=test'
+alias pacreset='mix ecto.drop; MIX_ENV=test mix ecto.drop; mix ecto.create; mix ecto.migrate; mix run priv/repo/seeds.exs'
+alias cap2='cap'
+alias cap3='cap'
+alias dk='docker'
+alias dkclean='docker rm `docker ps -aq -f status=exited`'
+alias dkcleanhard='docker rm -f `docker ps -aq`'
+alias dki='docker images'
+alias dkrmi='docker rmi'
+alias dkb='docker build'
+alias dkr='docker run'
+alias esg='env | grep'
+# Git stuff
+alias gs='git status'
+alias gc='git commit -a'
+alias mrg='mix routes | grep'
+# Kubectl stuff
+alias ku='kubectl'
+alias kup='kubectl get pods -o wide'
+alias kul='kubectl logs'
+alias kud='kubectl describe'
+alias kuc='kubectl config get-contexts'
+alias kuc-mku='kubectl config use-context minikube'
+alias kuc-demo='kubectl config use-context gke_pacsight-demo_us-central1-a_ps-demo; export GOOGLE_APPLICATION_CREDENTIALS=~/.ssh/PACsight-demo-4bbc77535e12.json'
+alias kuc-www='kubectl config use-context gke_pacsight-www_us-central1-a_ps-www; export GOOGLE_APPLICATION_CREDENTIALS=~/.ssh/PACsight-www-ccb07216b061.json'
+alias kuc-test='kubectl config use-context gke_pacsight-test_us-central1-a_pacsight-test; export GOOGLE_APPLICATION_CREDENTIALS=~/.ssh/PACsight-test-a55e9f045b0f.json'
+alias kux='kubectl exec -it '
+alias mik='minikube'
+alias mikreset='sudo mysql.server start; mik delete; mik start; sleep 50; pach; make repo-init; sleep 30; make secrets; source envs/mku.env.sh; make mku-up; sleep 120; make mku-db-load; pacb; source ~/Dev/NHQ/pac-sight-be/apps/ps_web/env.mix.sh; mix psreset'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -22,8 +60,10 @@ alias dt="cd ~/Desktop"
 alias g="git"
 alias h="history"
 alias j="jobs"
-alias start_mysql='sudo /usr/local/opt/mariadb/bin/mysqld_safe &'¬
-alias stop_mysql='/usr/local/opt/mariadb10/bin/mysqladmin shutdown'¬
+#alias start_mysql='sudo /usr/local/opt/mariadb/bin/mysqld_safe &'¬
+#alias stop_mysql='/usr/local/opt/mariadb10/bin/mysqladmin shutdown'¬
+alias mystart='mysql.server start'
+alias mystop='mysql.server stop'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -33,7 +73,7 @@ else # OS X `ls`
 fi
 
 # List all files colorized in long format
-alias l="ls -alF ${colorflag}"
+alias l="ls -alhF ${colorflag}"
 
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"

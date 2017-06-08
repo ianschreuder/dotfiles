@@ -50,15 +50,19 @@ unset file
 
 # Customize to your needs...
 PATH=$PATH:/Users/ian/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PATH=$PATH:./node_modules/.bin
 export PATH
+# set up go tools
+export GOPATH="$HOME/Dev/GoTools"
+export PATH=$PATH:$GOPATH/bin
 
-pry () {
-    if [ -e Gemfile.lock ] && [ -e ./config/environment.rb ] && grep -q pry Gemfile.lock
-    then
-        bundle exec pry -r ./config/environment "$@"
-    else
-        /usr/bin/pry "$@"
-    fi
-}
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/ian/Dev/NHQ/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/ian/Dev/NHQ/google-cloud-sdk/path.zsh.inc'
+fi
 
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/ian/Dev/NHQ/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/ian/Dev/NHQ/google-cloud-sdk/completion.zsh.inc'
+fi
 
