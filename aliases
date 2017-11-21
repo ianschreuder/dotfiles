@@ -1,4 +1,5 @@
 #
+alias afk'pmset displaysleepnow'
 alias tc='truffle compile'
 alias tt='truffle test'
 alias tm='truffle migrate'
