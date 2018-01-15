@@ -1,6 +1,6 @@
 #
-alias b21be='cd ~/Dev/Bridge21/bridge21_api'
-alias b21fe='cd ~/Dev/Bridge21/bridge21_frontend'
+alias b21b='cd ~/Dev/Bridge21/bridge21_api'
+alias b21f='cd ~/Dev/Bridge21/bridge21_frontend'
 alias cdg='cd ~/Dev/Crypto/GethNetwork'
 alias afk='open -a ScreenSaverEngine'
 alias tc='truffle compile'
