@@ -6,6 +6,7 @@ task :install do
   install_oh_my_zsh
   switch_to_zsh
   replace_all = false
+  make_some_directories
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE git oh-my-zsh]
   files << "oh-my-zsh/custom/plugins/rbates"
   files << "oh-my-zsh/custom/rbates.zsh-theme"
@@ -33,6 +34,12 @@ task :install do
     else
       link_file(file)
     end
+  end
+end
+
+def make_some_directories
+  [".nvm", ".vim", ".vim/backups", ".vim/swaps", ".vim/undo"].each do |dir|
+    `mkdir ~/#{dir}`
   end
 end
 
