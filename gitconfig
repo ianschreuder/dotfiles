@@ -86,3 +86,10 @@
 
 [push]
 	default = matching
+[pull]
+	rebase = false
+[pager]
+	branch = false
+  #diff = false
+[init]
+	defaultBranch = master

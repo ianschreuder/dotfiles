@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+export ZSH_DISABLE_COMPFIX=true
 export ZSH=/Users/ian/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -86,6 +87,20 @@ source ~/.aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+. $HOME/.asdf/asdf.sh
+
+## LSOF command
+listening() {
+  if [ $# -eq 0 ]; then
+      lsof -iTCP -sTCP:LISTEN -n -P
+  elif [ $# -eq 1 ]; then
+      lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+  else
+      echo "Usage: listening [pattern]"
+  fi
+}
+
+export PGDATABASE=postgres
+
+eval "$(direnv hook zsh)"
 
