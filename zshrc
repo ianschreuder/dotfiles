@@ -101,6 +101,7 @@ listening() {
 }
 
 export PGDATABASE=postgres
+export COPYFILE_DISABLE=true # disables mac putting in weird files
 
 eval "$(direnv hook zsh)"
 
